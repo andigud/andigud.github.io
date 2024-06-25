@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Sumerian IME: Roman</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="language" content="sm">
+    <meta name="title" content="Sumerian IME: Roman">
+    <meta name="author" content="𒀭𒁲𒋻">
+    <meta name="copyright" content="Sumerian IME: Roman">
+    <meta name="robots" content="index">
+    <meta name="subject" content="Sumerian IME: Roman">
+    <meta name="keywords" content="Sumerian IME: Roman">
+    <meta name="description" content="Sumerian IME: Roman">
+    <meta name="classification" content="Sumerian IME: Roman">
+    <script src="dict.js"></script>
+    <script>
+        let stroke = [256]
+        let dict = [256]
+        onload = function () {
+            getdict();
+            getime();
+        }
+        function getime() {
+            sug.innerHTML = "";
+            i = 0
+            for (var i = 0; i < dict.length; i++) {
+                if (sumin.value.includes(stroke[i]) == true) {
+                    console.log('fuck')
+                    sug.innerHTML += '<h onclick="imein(' + "'" + dict[i] + "')" + '">' + dict[i] + '</h>'
+                }
+            }
+        }
+        function keyin(sumchar) {
+            sumin.value += sumchar;
+            getime();
+        }
+        function imein(sumchar) {
+            sumout.value += sumchar;
+            sug.innerHTML = "";
+            sumin.value = "";
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <textarea rows="4" id="sumout" class="sumout"></textarea>
+        <br />
+        <textarea rows="4" id="sumin" class="sumin" oninput="getime()" onchange="getime()"></textarea>
+        <div class="sug" id="sug">
+
+        </div>
+
+        <div class="keyboard">
+            <button class="keys" onclick="keyin('á')">á</button>
+            <button class="keys" onclick="keyin('í')">í</button>
+            <button class="keys" onclick="keyin('ú')">ú</button>
+            <button class="keys" onclick="keyin('é')">é</button>
+            <button class="keys" onclick="keyin('ó')">ó</button>
+            <button class="keys" onclick="keyin('ğ')">ğ</button>
+            <button class="keys" onclick="keyin('š')">š</button>
+
+        </div>
+
+    </center>
+</body>
+</html>
