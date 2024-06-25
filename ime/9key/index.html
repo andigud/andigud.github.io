@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Sumerian IME: 9 Keys</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,  user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <meta name="language" content="sm">
+    <meta name="title" content="Sumerian IME: 9 Keys">
+    <meta name="author" content="𒀭𒁲𒋻">
+    <meta name="copyright" content="Sumerian IME: 9 Keys">
+    <meta name="robots" content="index">
+    <meta name="subject" content="Sumerian IME: 9 Keys">
+    <meta name="keywords" content="Sumerian IME: 9 Keys">
+    <meta name="description" content="Sumerian IME: 9 Keys">
+    <meta name="classification" content="Sumerian IME: 9 Keys">
+    <script src="dict.js"></script>
+    <script>
+        let stroke = [256]
+        let dict = [256]
+        onload = function () {
+            getdict();
+            getime();
+        }
+        function getime() {
+            sug.innerHTML = "";
+            i = 0
+            for (var i = 0; i < dict.length; i++) {
+                if (sumin.value.includes(stroke[i]) == true) {
+                    console.log('fuck')
+                    sug.innerHTML += '<h onclick="imein(' + "'" + dict[i] + "')" + '">' + dict[i] + '</h>'
+                }
+            }
+        }
+        function keyin(sumchar) {
+            sumin.value += sumchar;
+            getime();
+        }
+        function imein(sumchar) {
+            sumout.value += sumchar;
+            sug.innerHTML = "";
+            sumin.value = "";
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <textarea rows="4" id="sumout" class="sumout"></textarea>
+        <br />
+        <textarea rows="4" id="sumin" class="sumin" oninput="getime()"></textarea>
+        <div class="sug" id="sug">
+
+        </div>
+        
+        <div class="keyboard">
+            <button class="keys">_</button>
+            <button class="keys" onclick="keyin('𒁹')">𒁹</button>
+            <button class="keys" onclick="keyin('𒀸')">𒀸</button>
+            <button class="keys" onclick="keyin('𒀭')">𒀭</button>
+            <button class="keys" onclick="keyin('𒄭')">𒄭</button>
+            <button class="keys" onclick="keyin('𒆸')">𒆸</button>
+            <br />
+            <button class="keys" onclick="keyin('𒀹')">𒀹</button>
+            <button class="keys" onclick="keyin('𒀺')">𒀺</button>
+            <button class="keys" onclick="keyin('𒌋')">𒌋</button>
+            <button class="keys" onclick="keyin('𒊹')">𒊹</button>
+            <button class="keys" onclick="keyback()">←</button>
+            <br />
+            <button class="keys" onclick="keycomma()">🔢</button>
+            <button class="keys" onclick="keyspace()">__Space__</button>
+            <button class="keys" onclick="keyperiod()">.</button>
+
+        </div>
+
+    </center>
+</body>
+</html>
